@@ -1,8 +1,11 @@
 const express = require("express");
-const app = express();
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
 
-const PORT = process.env.port || 80;
+dotenv.config();//환경변수 관리
+
+const app = express();
+const PORT = process.env.port || 80;//포팅
 
 //라우팅
 const home = require("./src/routes/home");
