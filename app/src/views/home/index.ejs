@@ -4,10 +4,10 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Document</title>
+	<title>전국 병원 사이트</title>
 </head>
 <body>
-
+	
 <form>
 	<select id="clCd" >
 	  <option value="none">=== 병원종류선택 ===</option>
@@ -84,14 +84,18 @@
 
 <button id="my-button">완료</button>
 
-<input type='text' id='geo' disabled value style='width:200px;height:50px;'/>
-<button id="my" disabled value>입력</button>
+<input type='text' id='geo' disabled value style='width:200px;height:50px;' placeholder=" 주소를 입력하여 지도위치 이동"/>
+<button id="my" disabled value>주소입력</button>
 	
 	<div id="map" style="width:100%;height:100vh;"></div>
 
 	<script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=becc7422f0b5814b3b0ff2eabeb25a5b&libraries=services,clusterer,drawing"></script>
-
 	<script>
+		const queryString = decodeURI(location.search,"UTF-8");
+		const urlParams = new URLSearchParams(queryString);
+		const user_ID = urlParams.get("id");
+		document.write("<h2>"+user_ID+"님</h2>")
+		
 
 		function btnActive()  {
 				const target1 = document.getElementById('geo');
@@ -226,7 +230,7 @@
 								+ "<br/>" + "전화번호 :" +item[i]["telno"]
 								+ "<br/>" + "사이트URL :" + hospsite
 								+ "<br/>" + `<div style="padding:5px;"><a target="_blank" href = ${hospsite}>해당병원 사이트 연결</a></div>`
-								+ `<div style="padding:5px;"><a target="_blank" href = ${navigation}>해당병원 길찾기</a></div>`, 
+								+ `<div style="padding:5px;"><a target="_blank" href = ${navigation}>해당병원 길찾기</a></div>`,
     						iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
 							// 마커 위에 표시할 인포윈도우를 생성한다
@@ -234,6 +238,7 @@
 								content : `<div style="width:100%; padding:5px;">${iwContent}</div>`,
    								removable : iwRemoveable
 							});
+
 
 							kakao.maps.event.addListener(
 								marker,

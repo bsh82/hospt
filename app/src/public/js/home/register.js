@@ -25,16 +25,16 @@ function register() {
     })
     .then((res) => res.json())
     .then((res) => {
-        //로그인 성공시 루트페이지 연결
+
         if(res.success) {
             location.href = '/login';
         }
-        //로그인 실패시 실패 메시지 출력
+   
         else {
             alert(res.msg);
         }
     })
-    //로그인중 에러 발생시 에러 메시지 출력
+
     .catch((err) => {
         console.error(new Error("회원가입 중 에러 발생"));
     });

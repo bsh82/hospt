@@ -5,6 +5,7 @@ loginBtn = document.querySelector("#button");
 loginBtn.addEventListener("click", login);
 
 function login() {
+
     const req = {
        id: id.value,
        pw: pw.value,
@@ -21,7 +22,7 @@ function login() {
     .then((res) => {
         //로그인 성공시 루트페이지 연결
         if(res.success) {
-            location.href = '/';
+            location.href = "/main?id="+res.info;
         }
         //로그인 실패시 실패 메시지 출력
         else {
@@ -33,3 +34,5 @@ function login() {
         console.error(new Error("로그인 중 에러 발생"));
     });
 };
+
+

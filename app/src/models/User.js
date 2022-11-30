@@ -12,7 +12,7 @@ class User {
 
             if(id){
                 if(id === client.id && pw === client.pw) {
-                    return { success: true };
+                    return { success: true, info: id };
                 }
                 return { success: false, msg: "비밀번호가 틀렸습니다."};
             }
