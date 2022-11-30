@@ -1,16 +1,22 @@
 const id = document.querySelector("#id"),
+name = document.querySelector("#name"),
 pw = document.querySelector("#pw"),
-loginBtn = document.querySelector("#button");
+confirmpw = document.querySelector("#confirm-pw"),
+registerBtn = document.querySelector("#button");
 
-loginBtn.addEventListener("click", login);
+registerBtn.addEventListener("click", register);
 
-function login() {
+function register() {
+    if(!id.value) return alert("아이디를 입력해주세요.")
+    if(pw !== confirmpw) return alert("비밀번호가 일치하지 않습니다.");
+
     const req = {
        id: id.value,
+       name: name.value,
        pw: pw.value,
     };
-
-    fetch("/login", {
+    
+    fetch("/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -21,7 +27,7 @@ function login() {
     .then((res) => {
         //로그인 성공시 루트페이지 연결
         if(res.success) {
-            location.href = '/';
+            location.href = '/login';
         }
         //로그인 실패시 실패 메시지 출력
         else {
@@ -30,6 +36,6 @@ function login() {
     })
     //로그인중 에러 발생시 에러 메시지 출력
     .catch((err) => {
-        console.error(new Error("로그인 중 에러 발생"));
+        console.error(new Error("회원가입 중 에러 발생"));
     });
 };
