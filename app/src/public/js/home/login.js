@@ -22,11 +22,11 @@ function login() {
     .then((res) => {
         //로그인 성공시 루트페이지 연결
         if(res.success) {
-            location.href = "/main?id="+res.info;
+            location.href = "/main?id="+res.userid;
         }
         //로그인 실패시 실패 메시지 출력
         else {
-            alert(res.msg);
+            alert("존재하지 않는 계정입니다.");
         }
     })
     //로그인중 에러 발생시 에러 메시지 출력
