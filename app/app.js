@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 dotenv.config();//환경변수 관리
 
 const app = express();
-const PORT = process.env.port || 80;//포팅
+const PORT = process.env.port || 3000;//포팅
 
 //라우팅
 const home = require("./src/routes/home");
