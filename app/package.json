@@ -27,7 +27,6 @@
     "debug": "^2.6.9",
     "depd": "^2.0.0",
     "destroy": "^1.2.0",
-    "dotenv": "^16.0.3",
     "ee-first": "^1.1.1",
     "ejs": "^3.1.8",
     "encodeurl": "^1.0.2",
@@ -81,10 +80,13 @@
     "vary": "^1.1.2"
   },
   "scripts": {
-    "start": "node ./bin/www.js",
+    "start": "nodemon ./bin/www.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "bsh8282",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv": "^16.0.3"
+  }
 }
